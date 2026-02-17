@@ -118,10 +118,15 @@ export const Contact = () => {
     // Real-time validation only for touched fields
     if (touched[name]) {
       const error = validateField(name, value);
-      setErrors((prev) => ({
-        ...prev,
-        [name]: error,
-      }));
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        if (error) {
+          newErrors[name as keyof FormErrors] = error;
+        } else {
+          delete newErrors[name as keyof FormErrors];
+        }
+        return newErrors;
+      });
     }
   };
 
@@ -143,10 +148,15 @@ export const Contact = () => {
 
     // Validate the field when it loses focus
     const error = validateField(name, trimmedValue);
-    setErrors((prev) => ({
-      ...prev,
-      [name]: error,
-    }));
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      if (error) {
+        newErrors[name as keyof FormErrors] = error;
+      } else {
+        delete newErrors[name as keyof FormErrors];
+      }
+      return newErrors;
+    });
   };
 
   const formRef = useRef<HTMLFormElement>(null);

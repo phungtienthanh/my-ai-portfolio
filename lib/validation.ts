@@ -10,6 +10,7 @@ export const contactFormSchema = z.object({
   email: z.string().email(validationMessages.email.invalid),
   message: z
     .string()
+    // .min(10, validationMessages.message.minLength)
     .max(1000, validationMessages.message.maxLength),
   phone: z.string().optional(),
 });
