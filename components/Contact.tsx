@@ -60,8 +60,8 @@ export const Contact = () => {
     switch (name) {
       case "name":
         if (!value.trim()) return validationMessages.name.required;
-        // Check character validity FIRST (before length checks)
-        if (!/^[\p{L}\p{M}\s.]+$/u.test(value)) return validationMessages.name.invalidChars;
+        // // Check character validity FIRST (before length checks)
+        // if (!/^[\p{L}\p{M}\s.]+$/u.test(value)) return validationMessages.name.invalidChars;
         if (value.trim().length < 2) return validationMessages.name.minLength;
         if (value.trim().length > 50) return validationMessages.name.maxLength;
         return undefined;
@@ -73,13 +73,13 @@ export const Contact = () => {
 
       case "subject":
         if (!value.trim()) return validationMessages.subject.required;
-        if (value.trim().length < 5) return validationMessages.subject.minLength;
+        // if (value.trim().length < 5) return validationMessages.subject.minLength;
         if (value.trim().length > 100) return validationMessages.subject.maxLength;
         return undefined;
 
       case "message":
         if (!value.trim()) return validationMessages.message.required;
-        if (value.trim().length < 10) return validationMessages.message.minLength;
+        // if (value.trim().length < 10) return validationMessages.message.minLength;
         if (value.trim().length > 5000) return validationMessages.message.maxLength;
         return undefined;
 
