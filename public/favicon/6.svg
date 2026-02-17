@@ -1,0 +1,29 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bracketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- T made from code bracket style -->
+  <!-- Top horizontal bar made of brackets -->
+  <!-- Left bracket opening -->
+  <path d="M 30 35 L 25 35 Q 20 35 20 42 L 20 55 Q 20 62 25 62 L 30 62" fill="none" stroke="url(#bracketGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Right bracket closing -->
+  <path d="M 90 35 L 95 35 Q 100 35 100 42 L 100 55 Q 100 62 95 62 L 90 62" fill="none" stroke="url(#bracketGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Center line connecting -->
+  <line x1="30" y1="48" x2="90" y2="48" stroke="url(#bracketGrad)" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Vertical stem made of brackets -->
+  <!-- Left side -->
+  <path d="M 45 70 L 40 70 Q 35 70 35 77 L 35 95 Q 35 102 40 102 L 45 102" fill="none" stroke="url(#bracketGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Right side -->
+  <path d="M 75 70 L 80 70 Q 85 70 85 77 L 85 95 Q 85 102 80 102 L 75 102" fill="none" stroke="url(#bracketGrad)" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Center line -->
+  <line x1="45" y1="86" x2="75" y2="86" stroke="url(#bracketGrad)" stroke-width="3" stroke-linecap="round"/>
+</svg>

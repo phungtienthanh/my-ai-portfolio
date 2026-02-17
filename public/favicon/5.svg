@@ -1,0 +1,28 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neuralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="neuralGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- T made of Neural Nodes -->
+  <!-- Top horizontal bar of T made of nodes -->
+  <circle cx="30" cy="28" r="5" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="45" cy="28" r="5" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="60" cy="30" r="6" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="75" cy="28" r="5" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="90" cy="28" r="5" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  
+  <!-- Vertical stem of T made of nodes -->
+  <circle cx="60" cy="50" r="4" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="60" cy="68" r="4" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+  <circle cx="60" cy="86" r="5" fill="url(#neuralGrad)" filter="url(#neuralGlow)"/>
+</svg>

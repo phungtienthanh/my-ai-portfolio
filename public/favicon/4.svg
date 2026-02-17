@@ -1,0 +1,28 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glowGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- T Monogram with dashed graph structure and glow -->
+  <!-- Horizontal top line (dashed) -->
+  <line x1="25" y1="30" x2="95" y2="30" stroke="url(#glowGrad4)" stroke-width="5" stroke-dasharray="6,4" filter="url(#glow4)" stroke-linecap="round"/>
+  
+  <!-- Vertical center stem -->
+  <line x1="60" y1="30" x2="60" y2="100" stroke="url(#glowGrad4)" stroke-width="5" filter="url(#glow4)" stroke-linecap="round"/>
+  
+  <!-- Node points at intersections -->
+  <circle cx="25" cy="30" r="5" fill="url(#glowGrad4)" filter="url(#glow4)"/>
+  <circle cx="95" cy="30" r="5" fill="url(#glowGrad4)" filter="url(#glow4)"/>
+  <circle cx="60" cy="30" r="6" fill="url(#glowGrad4)" filter="url(#glow4)"/>
+  <circle cx="60" cy="100" r="5" fill="url(#glowGrad4)" filter="url(#glow4)"/>
+</svg>
