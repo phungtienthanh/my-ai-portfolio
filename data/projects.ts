@@ -37,7 +37,7 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Hệ thống phân tích dữ liệu thời tiết quy mô lớn",
+    title: "Real-time Weather Analytics Pipeline",
     description: "Dự án tập trung xây dựng một pipeline xử lý dữ liệu lớn để thu thập, xử lý, và phân tích dữ liệu thời tiết thực tế từ 20 thành phố lớn, được thiết kế theo kiến trúc Lambda.",
     tech: ["Kafka", "Spark", "Hadoop", "MongoDB", "Kubernetes"],
     githubUrl: "https://github.com/quoctrieu123/-2025_1-Big-Data-Project" 
