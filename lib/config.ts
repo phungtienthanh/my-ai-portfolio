@@ -7,10 +7,11 @@
 // ENVIRONMENT VARIABLES
 // ============================================================================
 export const config = {
-  // Email service (Contact form)
-  resendApiKey: process.env.RESEND_API_KEY,
+  // Email service (Contact form) - using Gmail SMTP
+  gmailUser: process.env.GMAIL_USER,
+  gmailAppPassword: process.env.GMAIL_APP_PASSWORD,
   adminEmail: process.env.ADMIN_EMAIL,
-  emailFrom: process.env.NEXT_PUBLIC_EMAIL_FROM || "noreply@resend.dev",
+  emailFrom: process.env.NEXT_PUBLIC_EMAIL_FROM || "noreply@gmail.com",
 
   // API
   apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000",

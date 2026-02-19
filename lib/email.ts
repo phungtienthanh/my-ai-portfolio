@@ -1,8 +1,15 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { emailTemplates } from "@/lib/messages";
 import { config } from "@/lib/config";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Gmail SMTP transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 export interface EmailData {
   to: string;
@@ -12,20 +19,20 @@ export interface EmailData {
 
 export async function sendEmail(data: EmailData) {
   try {
-    const result = await resend.emails.send({
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      throw new Error("Gmail credentials not configured");
+    }
+
+    const result = await transporter.sendMail({
       from: config.emailFrom,
       to: data.to,
       subject: data.subject,
       html: data.html,
     });
 
-    if (result.error) {
-      throw new Error(result.error.message);
-    }
-
     return {
       success: true,
-      id: result.data?.id,
+      id: result.messageId,
     };
   } catch (error) {
     console.error("Email send error:", error);

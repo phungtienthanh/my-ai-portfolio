@@ -100,8 +100,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate environment
-    if (!config.adminEmail || !config.resendApiKey) {
-      console.error("❌ Missing env vars: adminEmail or resendApiKey");
+    if (!config.adminEmail || !config.gmailUser || !config.gmailAppPassword) {
+      console.error("❌ Missing env vars: adminEmail, gmailUser, or gmailAppPassword");
       return NextResponse.json(
         { success: false, error: "Server configuration error" },
         { status: 500, headers: corsHeaders }
@@ -177,25 +177,45 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Handle Resend API errors
+    // Handle Gmail SMTP errors
     if (error instanceof Error) {
       const msg = error.message.toLowerCase();
       
-      if (msg.includes("testing email")) {
+      if (msg.includes("invalid login") || msg.includes("authentication failed") || msg.includes("invalid credentials")) {
         return NextResponse.json(
           {
             success: false,
-            error: "Cannot send to this email address. Contact form is in testing mode.",
+            error: "Email service authentication error. Please contact the site owner.",
           },
           { status: 503, headers: corsHeaders }
         );
       }
-      
-      if (msg.includes("too many requests")) {
+
+      if (msg.includes("daily limit") || msg.includes("rate limit")) {
         return NextResponse.json(
           {
             success: false,
-            error: "Server is receiving too many requests. Please try again later.",
+            error: "Email service has reached daily limit. Please try again tomorrow.",
+          },
+          { status: 503, headers: corsHeaders }
+        );
+      }
+
+      if (msg.includes("invalid email") || msg.includes("invalid recipient")) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Invalid recipient email address.",
+          },
+          { status: 400, headers: corsHeaders }
+        );
+      }
+      
+      if (msg.includes("too many requests") || msg.includes("econnrefused")) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Email service is temporarily unavailable. Please try again later.",
           },
           { status: 429, headers: corsHeaders }
         );
