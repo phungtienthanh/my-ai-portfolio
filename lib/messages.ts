@@ -123,9 +123,9 @@ ${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
               
               <div class="social-links">
                 <p style="margin-bottom: 10px; color: #6b7280;"><strong>Kết nối với tôi:</strong></p>
-                <a href="https://github.com">GitHub</a>
-                <a href="https://linkedin.com">LinkedIn</a>
-                <a href="mailto:phungtienthanh2004@gmail.com">Email</a>
+                <a href="https://github.com/phungtienthanh">GitHub</a>
+                <a href="https://www.linkedin.com/in/phungtienthanh232/">LinkedIn</a>
+                <a href="mailto:portfolio.ptt2004@gmail.com">Email</a>
               </div>
               
               <p style="color: #6b7280; font-size: 14px; margin-top: 25px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
