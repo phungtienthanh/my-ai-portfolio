@@ -20,7 +20,7 @@ export const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-40% 0px -60% 0px",
+      rootMargin: "-20% 0px -70% 0px",
       threshold: 0,
     };
 
@@ -29,26 +29,11 @@ export const Navbar = () => {
       const visibleEntries = entries.filter((entry) => entry.isIntersecting);
       
       if (visibleEntries.length > 0) {
-        // Find the entry closest to top of viewport within preferred range
+        // Find the entry closest to top of viewport
         const topEntry = visibleEntries.reduce((prev, current) => {
-          const prevTop = prev.boundingClientRect.top;
-          const currentTop = current.boundingClientRect.top;
-          
-          // Prefer entries in upper portion of viewport (0-240px from top)
-          const prevInRange = prevTop >= 0 && prevTop <= 240;
-          const currentInRange = currentTop >= 0 && currentTop <= 240;
-          
-          if (prevInRange && currentInRange) {
-            // Both in preferred range, pick closer to top
-            return currentTop < prevTop ? current : prev;
-          }
-          
-          // One in range, prefer it
-          if (currentInRange) return current;
-          if (prevInRange) return prev;
-          
-          // Both outside range, pick closest to 0 (least negative)
-          return Math.abs(currentTop) < Math.abs(prevTop) ? current : prev;
+          const prevTop = Math.abs(prev.boundingClientRect.top);
+          const currentTop = Math.abs(current.boundingClientRect.top);
+          return currentTop < prevTop ? current : prev;
         });
         
         const sectionId = topEntry.target.id;
@@ -61,8 +46,33 @@ export const Navbar = () => {
     const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
+    // Fallback: scroll event listener
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      let closestSection = "";
+      let closestDistance = Infinity;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top);
+        
+        if (distance < closestDistance && rect.top < window.innerHeight / 2) {
+          closestDistance = distance;
+          closestSection = section.id;
+        }
+      });
+
+      if (closestSection) {
+        const matchedItem = navItems.find((item) => item.href === `#${closestSection}`);
+        if (matchedItem) setActive(matchedItem.name);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
       observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
