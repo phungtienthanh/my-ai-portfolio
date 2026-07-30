@@ -132,7 +132,7 @@ export const About = () => {
             viewport={{ once: true }}
             className="text-xl md:text-2xl text-emerald-600 font-semibold mb-8 italic tracking-wide"
           >
-            AI Engineer | Data Specialist
+            AI Engineer | Specializing in Computer Vision
           </motion.h2>
 
           {/* Education Section - Expandable */}
